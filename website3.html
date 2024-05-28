@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Flicks Photography</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #fff;
+        }
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+        .logo img {
+            max-height: 100px;
+        }
+        .nav {
+            position: absolute;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        .nav a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .portfolio a img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .portfolio a img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .lightboxOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: none;
+        }
+        .lightboxOverlay img {
+            position: relative;
+            max-width: 90%;
+            max-height: 80%;
+            margin: 5% auto;
+            display: block;
+        }
+        .watermark {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: rgba(255, 255, 255, 0.65); /* 65% opacity */
+            font-size: 24px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+            color: #777;
+        }
+        .instagram-feed {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .instagram-feed iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="index.html"> <!-- Update this to your home page URL -->
+                <img src="/Users/neonidhsingh/Documents/Website/final2.png" alt="Logo">
+            </a>
+        </div>
+        <div class="nav">
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+    <div class="portfolio">
+        <!-- Embed Instagram feed using iframe -->
+        <div class="instagram-feed">
+            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+            <div class="elfsight-app-573bd3b2-9947-42b4-9262-a51bbefb8acc" data-elfsight-app-lazy></div>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2024 NEON FLICKS | ALL RIGHTS RESERVED
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        lightbox.option({
+            'fadeDuration': 200,  // Transition time for fading
+            'resizeDuration': 200,  // Transition time for resizing
+            'wrapAround': true  // Allows navigation between images in the gallery
+        });
+
+        // Add watermark to the lightbox images
+        document.addEventListener('lightbox:opened', function() {
+            var lightboxImage = document.querySelector('.lightbox .lb-image');
+            if (lightboxImage) {
+                var watermark = document.createElement('div');
+                watermark.className = 'watermark';
+                watermark.innerText = 'Neon Flicks';
+                lightboxImage.parentElement.appendChild(watermark);
+            }
+        });
+    </script>
+</body>
+</html>
